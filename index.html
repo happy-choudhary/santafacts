@@ -13,6 +13,7 @@
             padding: 20px;
             text-align: center;
             overflow: hidden; /* Prevent scrollbars during animation */
+            position: relative;
         }
         h1 {
             color: #c0392b;
@@ -54,7 +55,8 @@
         }
         .falling {
             position: absolute;
-            animation: fall 1s forwards;
+            animation: fall 5s linear forwards;
+            font-size: 24px; /* Adjust size of falling items */
         }
         @keyframes fall {
             0% {
@@ -66,10 +68,21 @@
                 opacity: 0;
             }
         }
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://example.com/christmas-tree.png'); /* Replace with your Christmas tree image URL */
+            background-size: cover;
+            z-index: -1; /* Send background to back */
+        }
     </style>
 </head>
 <body>
 
+    <div class="background"></div>
     <h1>Amazing Facts About Santa Claus</h1>
     <div id="facts-container">
         <div class="fact active">Santa Claus is based on St. Nicholas, a 4th-century Greek bishop known for his generosity.</div>
@@ -103,12 +116,12 @@
                 shoutout.style.display = 'none';
             }, 2000); // Hide shoutout after 2 seconds
 
-            // Create falling candies and gifts
+            // Create falling items
             createFallingItems();
         }
 
         function createFallingItems() {
-            const items = ['🍬', '🎁']; // Candies and gifts emojis
+            const items = ['🎁', '🍬', '❄️', '🌸']; // Gifts, candies, snowflakes, and flowers emojis
             const item = document.createElement('div');
             item.className = 'falling';
             item.textContent = items[Math.floor(Math.random() * items.length)];
@@ -124,3 +137,4 @@
 
 </body>
 </html>
+
